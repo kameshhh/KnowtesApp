@@ -60,12 +60,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserByUsername(String username) {
-        return null;
+        return this.userRepo.findByUsername(username).orElseThrow(
+                () -> new ResourceNotFoundException("User", "username", Integer.parseInt(username))
+        );
     }
 
     @Override
     public void deleteUser(Integer userId) {
-
+        User user = this.userRepo.findById(userId).orElseThrow(
+                () -> new ResourceNotFoundException("User", "userId", userId)
+        );
+        this.userRepo.delete(user);
     }
 
     @Override
