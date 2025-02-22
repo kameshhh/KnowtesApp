@@ -1,4 +1,4 @@
-image: maven:3.8.6-openjdk-17  # Updated to include Java 17
+image: maven:3.8-jdk-17  # Updated to use Maven 3.8 with OpenJDK 17
 
 pipelines:
   default:
