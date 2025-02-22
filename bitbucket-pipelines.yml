@@ -1,4 +1,4 @@
-image: openjdk:17  # Use OpenJDK 17 base image
+image: maven:3.8-openjdk-17 
 
 pipelines:
   default:
@@ -6,10 +6,7 @@ pipelines:
         - step:
             name: Verify
             script:
-              # Install Maven manually
-              - apt-get update && apt-get install -y maven
-              # Run the build
-              - mvn clean install -B
+              - mvn clean install -B  # Run the build with Maven
             after-script:
               # Collect checkstyle results, if any, and convert to Bitbucket Code Insights.
               - pipe: atlassian/checkstyle-report:0.3.0
