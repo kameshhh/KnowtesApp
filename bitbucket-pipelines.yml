@@ -5,6 +5,8 @@ pipelines:
     - parallel:
         - step:
             name: Verify
+            caches:
+              - maven
             script:
               - mvn clean install -B  # Run the build with Maven
             after-script:
